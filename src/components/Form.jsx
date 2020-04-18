@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const Form = () => {
+const Form = ({consultDatas}) => {
 
 	const [busqueda, guardarBusqueda] = useState({
 		ciudad: '',
@@ -25,12 +25,20 @@ const Form = () => {
 		}
 	}
 
+	const consultClima = e => {
+		e.preventDefault();
+
+		consultDatas(busqueda);
+	}
+
 	return (
         <div className="contenedor-form">
         	<div className="container">
         		<div className="row">
         			<div className="col s12 m6">
-						<form>
+						<form
+							onSubmit={consultClima}
+						>
 							<div className="input-field col s12">
 								<label htmlFor="ciudad">Ciudad:</label>
 								<input 
